@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CourceAPI.Models;
+using CourceAPI.ResourceParameters;
+using CourseLibrary.API.Entities;
 using CourseLibrary.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +13,7 @@ namespace CourceAPI.Controllers
 {  
     
     [ApiController]
-    [Route("api/Authers")]
+    [Route("api/authers")]
     public class AuthorsController : ControllerBase
     {
         private readonly ICourseLibraryRepository _courseLibraryRepository;
@@ -22,22 +24,23 @@ namespace CourceAPI.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)); 
         }
 
-        [HttpGet()]      
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthers()
-        {
-            var authersFormRepo = _courseLibraryRepository.GetAuthors();
-            // var authers = new List<AuthorDto>();
-            //foreach (var item in authersFormRepo)
-            //{
-            //    authers.Add(new AuthorDto()
-            //    {
-            //        Id = item.Id,
-            //        Name = $" {item.FirstName} {item.LastName} "  
-            //    }); 
-            //}
+        //[HttpGet()]      
+        //public ActionResult<IEnumerable<AuthorDto>> GetAuthers()
+        //{
+        //    var authersFormRepo = _courseLibraryRepository.GetAuthors();
+        //    return Ok(_mapper.Map<IEnumerable<AuthorDto>>(authersFormRepo));
+        //}
 
-            return Ok(_mapper.Map<IEnumerable<AuthorDto>>(authersFormRepo));
+  
+        [HttpGet()]
+        
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthers([FromQuery] AuthorsResourceParameters authorsResourceParameters) 
+        {
+         var authorFormRepo  = _courseLibraryRepository.GetAuthors(authorsResourceParameters);
+            
+            return Ok(_mapper.Map<IEnumerable<AuthorDto>>(authorFormRepo)); 
         }
+
 
         [HttpGet("{authorId}")]
         public IActionResult GetAuthor(Guid authorId)

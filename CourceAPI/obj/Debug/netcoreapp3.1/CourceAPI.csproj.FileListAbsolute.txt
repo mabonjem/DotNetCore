@@ -120,7 +120,6 @@ C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\bin\Debug\netcoreapp3.1\ru\Micr
 C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\obj\Debug\netcoreapp3.1\CourceAPI.csprojAssemblyReference.cache
 C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Mabon\source\repos\DotNetCore\CourceAPI\obj\Debug\netcoreapp3.1\CourceAPI.csproj.CoreCompileInputs.cache

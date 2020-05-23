@@ -1,4 +1,5 @@
-﻿using CourseLibrary.API.DbContexts;
+﻿using CourceAPI.ResourceParameters;
+using CourseLibrary.API.DbContexts;
 using CourseLibrary.API.Entities; 
 using System;
 using System.Collections.Generic;
@@ -157,6 +158,27 @@ namespace CourseLibrary.API.Services
             {
                // dispose resources when needed
             }
+        }
+
+        public IEnumerable<Author> GetAuthors(AuthorsResourceParameters authorsResourceParameters)
+        {
+            var collection = _context.Authors as IEnumerable<Author>;
+            if (!string.IsNullOrWhiteSpace(authorsResourceParameters.MainCategory))
+            {
+                authorsResourceParameters.MainCategory = authorsResourceParameters.MainCategory.Trim();
+                collection = collection.Where(a => a.MainCategory == authorsResourceParameters.MainCategory);
+            }
+            else if (!string.IsNullOrWhiteSpace(authorsResourceParameters.SearchQuery))
+            {
+                authorsResourceParameters.SearchQuery = authorsResourceParameters.SearchQuery.Trim();
+                collection = collection.Where(
+                    a =>
+                    a.FirstName.Contains(authorsResourceParameters.SearchQuery) ||
+                    a.LastName.Contains(authorsResourceParameters.SearchQuery) ||
+                    a.MainCategory.Contains(authorsResourceParameters.SearchQuery));
+            }
+ 
+            return collection.ToList();
         }
     }
 }
